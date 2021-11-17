@@ -5,7 +5,6 @@
  * Functionality: Controls what happens when return button is pressed
  */
 
-import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
