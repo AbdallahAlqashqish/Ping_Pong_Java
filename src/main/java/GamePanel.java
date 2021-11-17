@@ -67,7 +67,7 @@ public class GamePanel extends JPanel implements Runnable {
         gameThread.start();
 
         //Add the mouse listener
-        this.addMouseListener(new MouseListener(this.frame, gameThread));
+        this.addMouseListener(new MouseListener(gameThread));
     }
 
     /**
@@ -146,8 +146,8 @@ public class GamePanel extends JPanel implements Runnable {
                 //Wait
                 Thread.sleep(frameTime);
             } catch (InterruptedException e) {
-                //Inform the user of the error
-                JOptionPane.showMessageDialog(this, "An error occurred, please try again.", "ERROR!", JOptionPane.ERROR_MESSAGE);
+                // Send user back to menu
+                MenuPanel.changeScene(this.frame, new MenuPanel(this.frame));
             }
         }
 

@@ -11,7 +11,6 @@ import java.awt.event.MouseEvent;
 
 class MouseListener extends MouseAdapter {
 
-    private final JFrame frame;
     private final Thread thread;
 
     /**
@@ -21,8 +20,7 @@ class MouseListener extends MouseAdapter {
      * @param frame: The frame
      * @param thread: The games thread
      */
-    public MouseListener(JFrame frame, Thread thread){
-        this.frame = frame;
+    public MouseListener(Thread thread){
         this.thread = thread;
     }
 
@@ -38,7 +36,6 @@ class MouseListener extends MouseAdapter {
         if(e.getX() <= ReturnButton.BUTTON_DIMENSION && e.getY() <= ReturnButton.BUTTON_DIMENSION){
             //Stop the game thread so the game doesn't run in the background
             this.thread.interrupt();
-            MenuPanel.changeScene(this.frame, new MenuPanel(this.frame));
         }
     }
 }
