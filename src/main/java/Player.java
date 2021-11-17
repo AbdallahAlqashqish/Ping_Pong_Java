@@ -124,27 +124,23 @@ public class Player extends Rectangle {
      */
     protected void keyPressed(KeyEvent e){
         if(this.x == LEFT_PLAYER_X && !this.isComp){ //The user controls
-            switch (e.getKeyCode()){
-                case KeyEvent.VK_W:
-                    //Move up
-                    setYDirection(-SPEED);
-                    break;
-                case KeyEvent.VK_S:
-                    //Move down
-                    setYDirection(SPEED);
-                    break;
-            }
-        } else if(this.x == RIGHT_PLAYER_X && !this.isComp){ //The second player controls
-            switch (e.getKeyCode()){
-                case KeyEvent.VK_UP:
-                    //Move up
-                    setYDirection(-SPEED);
-                    break;
-                case KeyEvent.VK_DOWN:
-                    //Move down
-                    setYDirection(SPEED);
-                    break;
-            }
+            int keyCode = e.getKeyCode();
+
+            if (keyCode == KeyEvent.VK_W)
+                setYDirection(-SPEED);
+
+            if (keyCode == KeyEvent.VK_S)
+                setYDirection(SPEED);
+        } 
+        
+        if(this.x == RIGHT_PLAYER_X && !this.isComp){ //The second player controls
+            int keyCode = e.getKeyCode();
+
+            if (keyCode == KeyEvent.VK_UP)
+                setYDirection(-SPEED);
+
+            if (keyCode == KeyEvent.VK_DOWN)
+                setYDirection(SPEED);
         }
     }
 
@@ -156,21 +152,15 @@ public class Player extends Rectangle {
      */
     protected void keyReleased(KeyEvent e){
         if(this.x == LEFT_PLAYER_X){ //The user controls
-            switch (e.getKeyCode()){
-                case KeyEvent.VK_W:
-                case KeyEvent.VK_S:
-                    //Stop moving
-                    setYDirection(0);
-                    break;
-            }
+            int keyCode = e.getKeyCode();
+
+            if (keyCode == KeyEvent.VK_S)
+                setYDirection(0);
         } else if(this.x == RIGHT_PLAYER_X && !this.isComp){ //The second user controls
-            switch (e.getKeyCode()){
-                case KeyEvent.VK_UP:
-                case KeyEvent.VK_DOWN:
-                    //Stop moving
-                    setYDirection(0);
-                    break;
-            }
+            int keyCode = e.getKeyCode();
+
+            if (keyCode == KeyEvent.VK_DOWN)
+                setYDirection(0);
         }
     }
 
